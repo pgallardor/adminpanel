@@ -1,0 +1,54 @@
+extends layout
+
+block content
+   div(id="body_info", class="html_body")
+      div(id="page_wrap")
+         img(src="https://pics.me.me/absolutely-disgusting-me-irl-20062128.png" alt="Photo of Cthulu" id="pic")
+
+         div(id="contact-info" class="vcard")
+            h1(class="fn") #{pinfo.title}
+            h3 Contact
+            <p> Cell: <span class="tel">#{uinfo.phNumber}</span><br />Email:
+            <a class="email" href="mailto:#{uinfo.email}">#{uinfo.email}</a>
+            </p>
+         div(id="objective")
+            p Aquí falta en la DB de dummy
+
+         div(class="clear")
+         dl
+            dd(class="clear")
+
+            dt Creator's Name
+            dd
+               h2 #{uinfo.name}
+               p
+                <strong>Country: </strong>Sweden YES! <br/> <strong>City: </strong> Stockholm
+
+            dd(class="clear")
+
+            dt Project's Information
+            dd
+               h2 Category
+               p Art, History, Moosic
+
+               h2 Goal:
+               <p><pre>$#{pinfo.goal}</pre></p>
+
+            dd(class="clear")
+
+            dt Legal Representation
+            dd
+               h2 <strong>Name: </strong>Algo algo
+               ul
+                  li What is real??
+
+      div(class="clear")
+
+      if (!pinfo.accepted)
+         div(class="btn-group")
+            <form action="/accept/#{pinfo._id}", method="post">
+               input(class="btn btn-success", type="submit", value="Accept")
+            </form>
+            <form action="/reject/#{pinfo._id}", method="post">
+               input(class="btn btn-danger", type="submit", value="Reject")
+            </form>

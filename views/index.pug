@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div(class="html_body")
+    h1 Onda Sonora Admin Panel
+    div(class="panel panel-primary")
+      div(class="panel-heading") Proyectos sin revisar
+
+      table(class="table" width="500")
+        tr
+          th Nombre Proyecto
+          th Meta
+          th Estado
+        each element in to_review
+          tr
+            td
+              <a href="/information/#{element._id}"> #{element.title}
+            td $#{element.goal}
+            if (element.accepted)
+              td Aceptado
+            else
+              td Por revisar

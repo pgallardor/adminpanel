@@ -1,0 +1,77 @@
+extends layout
+
+block content
+
+   div(id="body_info", class="html_body")
+      <div id="page-wrap">
+
+      <img src="https://pics.me.me/absolutely-disgusting-me-irl-20062128.png" alt="Photo of Cthulu" id="pic" />
+
+      <div id="contact-info" class="vcard">
+
+      <!-- Microformats! -->
+
+      <h1 class="fn">Project Name</h1>
+      h3 Contact
+      p Cell: <span class="tel">555-666-7777</span><br /> Email: <a class="email" href="mailto:bepis@mskr.io">bepis@mskr.io</a>
+
+      </div>
+
+      div(id="objective")
+         p I just want the best bepis in history of mankind. That's why I need your money!!
+
+
+      <div class="clear"></div>
+
+      <dl>
+      <dd class="clear"></dd>
+
+      <dt>Creator's name</dt>
+      <dd>
+      <h2>Yzabelle Aschoorra</h2>
+      <p><strong>Country:</strong> Sweden YES!<br />
+      <strong>City:</strong> Stockholm</p>
+      </dd>
+
+      <dd class="clear"></dd>
+
+      <dt>Project's data</dt>
+      <dd>
+      <h2>Category</h2>
+      <p>Art, History, Moosic</p>
+
+      <h2>Goal</h2>
+      <p> $20.000.000 </p>
+      </dd>
+
+      <dd class="clear"></dd>
+
+      <dt>Legal Representation</dt>
+      <dd>
+      <h2>Name <span>Leader/Overlord - Baton Rogue, LA - 1926-2010</span></h2>
+      <ul>
+      <li>Inspired and won highest peasant death competition among servants</li>
+      <li>Helped coordinate managers to grow cult following</li>
+      <li>Provided untimely deaths to all who opposed</li>
+      </ul>
+
+      <h2>Otros datos <span>Bartender/Server - Milwaukee, WI - 2009</span></h2>
+      <ul>
+      <li>Worked on grass-roots promotional campaigns</li>
+      <li>Reduced theft and property damage percentages</li>
+      <li>Janitorial work, Laundry</li>
+      </ul>
+      </dd>
+
+      <dd class="clear"></dd>
+
+
+
+      <div class="clear"></div>
+
+      </div>
+      div(class="btn-group")
+         form(action="/accept", method="post")
+            input(class="btn btn-success", type="submit", value="Accept")
+         form(action="/reject", method="post")
+            input(class="btn btn-danger", type="submit", value="Reject")
