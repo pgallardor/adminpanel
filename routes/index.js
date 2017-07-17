@@ -5,9 +5,9 @@ var User = require('../models/creator');
 var Project = require('../models/project');
 
 /*ERASE BEFORE USING ON SERVER*/
-router.get('/', function (req, res) {
+/*router.get('/', function (req, res) {
     res.redirect('/admin');
-});
+});*/
 
 router.get('/admin/login', loggedOut, function (req, res) {
     var messages = req.flash('error');
@@ -20,9 +20,9 @@ router.post('/admin/login', loggedOut, passport.authenticate('local-login', {
     failureFlash: true
 }));
 
-/*router.use('/', loggedIn, function (req, res, next) {
+router.use('/', loggedIn, function (req, res, next) {
     next();
-});*/
+});
 
 /* GET home page. */
 router.get('/admin', function(req, res) {
