@@ -1,22 +1,39 @@
 extends layout
 
 block content
+  -var today = new Date();
   div(class="html_body")
     h1 Onda Sonora Admin Panel
     div(class="panel panel-primary")
-      div(class="panel-heading") Proyectos sin revisar
+      div(class="panel-heading") Proyectos
 
       table(class="table" width="500")
         tr
           th Nombre Proyecto
+          th Fecha creación
+          th Días restantes
           th Meta
           th Estado
         each element in to_review
           tr
+            - var from_creation = today - element.creation;
             td
-              <a href="/information/#{element._id}"> #{element.title}
-            td $#{element.goal}
-            if (element.accepted)
-              td Aceptado
+              <a href="/admin/information/#{element._id}"> #{element.name} </a>
+              if (Math.ceil(from_creation/(1000*3600*24)) <= 2)
+                <i class="fa fa-star fa-lg"></i>
+            - var c_day = element.creation.getDate();
+            - var c_my = c_day + "/" + element.creation.getMonth() + "/" + element.creation.getFullYear();
+            td #{c_my}
+            - var time_diff = element.deadline - today;
+            - var remaining = Math.ceil(time_diff / (1000 * 3600 * 24));
+            if (time_diff < 0)
+              td Terminado
             else
+              td #{remaining} días
+            td $#{element.goal}
+            if (element.status == 1)
+              td Aceptado
+            else if (element.status == -1)
               td Por revisar
+            else if (element.status == 0)
+              td Esperando a usuario

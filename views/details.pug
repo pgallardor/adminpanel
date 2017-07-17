@@ -3,16 +3,16 @@ extends layout
 block content
    div(id="body_info", class="html_body")
       div(id="page_wrap")
-         img(src="https://pics.me.me/absolutely-disgusting-me-irl-20062128.png" alt="Photo of Cthulu" id="pic")
+         //img(src="https://pics.me.me/absolutely-disgusting-me-irl-20062128.png" alt="Photo of Cthulu" id="pic")
 
          div(id="contact-info" class="vcard")
-            h1(class="fn") #{pinfo.title}
-            h3 Contact
-            <p> Cell: <span class="tel">#{uinfo.phNumber}</span><br />Email:
-            <a class="email" href="mailto:#{uinfo.email}">#{uinfo.email}</a>
+            h1(class="fn") #{pinfo.name}
+            h3 Contacto
+            <p> Teléfono: <span class="tel">#{uinfo.phNumber}</span><br />Email:
+            <a class="email" href="mailto:#{uinfo.email}">#{uinfo.email}</a><br/>
             </p>
          div(id="objective")
-            p Aquí falta en la DB de dummy
+            p #{pinfo.descr}
 
          div(class="clear")
          dl
@@ -21,34 +21,40 @@ block content
             dt Creator's Name
             dd
                h2 #{uinfo.name}
-               p
+               p <a href="#">Referencia al perfil</a>
+               //p
                 <strong>Country: </strong>Sweden YES! <br/> <strong>City: </strong> Stockholm
 
             dd(class="clear")
 
             dt Project's Information
             dd
+               h2 URL
+               p <a href="https://wwww.ondasonora.rock/project/#{pinfo._id}">Ir a página de proyecto</a>
+
                h2 Category
-               p Art, History, Moosic
+               p Something here
 
                h2 Goal:
                <p><pre>$#{pinfo.goal}</pre></p>
 
-            dd(class="clear")
+               h2 Deadline:
+               p #{pinfo.deadline}
 
-            dt Legal Representation
-            dd
-               h2 <strong>Name: </strong>Algo algo
-               ul
-                  li What is real??
+            dd(class="clear")
 
       div(class="clear")
 
-      if (!pinfo.accepted)
+      if (pinfo.status != 1)
          div(class="btn-group")
-            <form action="/accept/#{pinfo._id}", method="post">
+            <form action="/admin/accept/#{pinfo._id}", method="post">
                input(class="btn btn-success", type="submit", value="Accept")
             </form>
-            <form action="/reject/#{pinfo._id}", method="post">
+            dd(class="clear")
+            <form action="/admin/review/#{pinfo._id}", method="post">
+               input(class="btn btn-warning", type="submit", value="Ask to modify")
+            </form>
+            dd(class="clear")
+            <form action="/admin/reject/#{pinfo._id}", method="post">
                input(class="btn btn-danger", type="submit", value="Reject")
             </form>

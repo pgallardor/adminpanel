@@ -9,12 +9,12 @@ var projects = [
       byUser: 'mamertomallol',
       name: 'Expropiese',
       descr: 'Porque Hayende no terminó el trabajo',
-      creation: 11-09-1973,
+      creation: new Date(1973, 09, 11),
       goal: 200000,
-      deadline: 23-06-2017,
+      deadline: new Date(2017, 7, 21),
       current: 19999,
       private: true,
-      status: 0
+      status: -1
   }),
 
   new Project({
@@ -22,34 +22,65 @@ var projects = [
       byUser: 'mamertomallol',
       name: 'Revivir la UP',
       descr: 'Pueblo, consciencia, fusil en el ano. MIR',
-      creation: 20-03-1960,
+      creation: new Date(1960, 03, 20),
       goal: 11091973,
-      deadline: 30-06-2018,
+      deadline: new Date(1973, 09, 11),
       current: 2500,
       private: false,
-      accepted: -1
+      status: -1
   }),
 
   new Project({
-      clientId: 'menelmen',
-      title: 'Nefasheria',
-      goal: 69000,
-      accepted: false
+      url: 'men',
+      byUser: 'nefasho',
+      name: 'Radical centrist political humour',
+      descr: 'm333333333333n',
+      creation: new Date(2017, 03, 20),
+      goal: 99999999,
+      deadline: new Date(2018, 06, 30),
+      current: 77777,
+      private: false,
+      status: -1
   }),
 
    new Project({
-       clientId: 'yachorre',
-       title: 'MaSKaR',
-       goal: 420000,
-       accepted: false
+       url: 'ondasonora',
+       byUser: 'yachorre',
+       name: 'Buena Onda Sonora',
+       descr: 'Proyectos culturales bien democráticos y comunistas para todos',
+       creation: new Date(2017, 01, 01),
+       goal: 11091973,
+       deadline: new Date(2017, 08, 01),
+       current: 0,
+       private: false,
+       status: -1
    }),
 
    new Project({
-       clientId: 'yachorre',
-       title: 'Weeb Movies',
-       goal: 3000,
-       accepted: true
-   })
+       url: 'movies',
+       byUser: 'yachorre',
+       name: 'Weeb Movies',
+       descr: 'Quiero ir a ver monos chinos al cine, denme plata por favor',
+       creation: new Date(2017, 05, 20),
+       goal: 11091973,
+       deadline: new Date(2018, 06, 30),
+       current: 2500,
+       private: false,
+       status: -1
+   }),
+
+    new Project({
+      url: 'fasho',
+      byUser: 'pgallardo',
+      name: 'Golpe de Estado bailable',
+      descr: 'Para disfrutar los bombardeos y los tanques al ritmo del rave y la cumbia universitaria :kappa:',
+      creation: new Date(2017, 07, 14),
+      goal: 5000000,
+      deadline: new Date(2017, 07, 14),
+      current: 0,
+      private: true,
+      status: -1
+    })
 ];
 
 var done = 0;

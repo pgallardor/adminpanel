@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    div(class="html_body")
+        h2 Tell user about the project
+        p <br/>
+
+        form(action="#" method="get")
+            p To: <input type="text" name="usr" value=#{details.username}><br/>
+            p Subject: <input type="text" name="subj" value=#{"'Acerca de " + details.pname + "'"} size="60"><br/>
+            p <textarea placeholder=" Message..." name="body" rows="6" cols="90"></textarea>
+
+        p <button type="button" class="btn btn-success">Send</button> &emsp; <a href="/">Go home</a>

@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    div(class="html_body")
+            div(class="row")
+                div(class="col-md-4 col-md-offset-4")
+                    h2 Add new Admin
+                    if (hasErrors)
+                        div(class="alert alert-danger")
+                            each msg in messages
+                                p #{msg}
+                    form(action="/admin/add_admin" method="post")
+                        div(class="form-group")
+                            label(for="username") Username
+                            input(type="text" id="username" name="username" class="form-control")
+                        div(class="form-group")
+                            label(for="password") Password
+                            input(type="password" id="password" name="password" class="form-control")
+                        button(type="submit" class="btn btn-success" action="submit") Create

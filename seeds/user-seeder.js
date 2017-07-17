@@ -5,7 +5,7 @@ mongoose.connect('localhost:27017/ondatest');
 
 var creators = [
     new Creator({
-        userId: 'menelmen',
+        userId: 'nefasho',
         name: 'Men El Men',
         email: 'men@elmen.us',
         phNumber: '5689999999'
@@ -23,6 +23,13 @@ var creators = [
         name: 'Yzabel Aschoorra',
         email: 'mskr@mskr.io',
         phNumber: '696969696969'
+    }),
+
+    new Creator({
+       userId: 'pgallardo',
+       name: 'Pedro Gallardo',
+       email: 'pgallardo@mskr.io',
+       phNumber: '0303456'
     })
 ]
 

@@ -141,7 +141,14 @@
 }
 
 .html_body {
+  margin-top: 20px;
   margin-left: 350px;
+}
+
+.login_screen {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
 }
 
 body_info { font: 16px Helvetica, Sans-Serif; line-height: 24px;}

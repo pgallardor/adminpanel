@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var schema = new Schema({
-    url: {type: String, required: true},
-    byUser: {type: String, required: true},
+    by: {type: String, required: true},
     name: {type: String, required: true},
+    flex: {type: Boolean, required: true},
     descr: {type: String, required: false},
     creation: {type: Date, required: true},
     goal: {type: Number, required: true},
