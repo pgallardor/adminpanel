@@ -1,7 +1,7 @@
 var Project = require('../models/project');
 var mongoose = require('mongoose');
 
-mongoose.connect('localhost:27017/ondatest');
+mongoose.connect('localhost:27017/ondasonora');
 
 var projects = [
   new Project({

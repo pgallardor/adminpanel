@@ -11,7 +11,7 @@ var flash = require('connect-flash');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-mongoose.connect('localhost:27017/ondatest')
+mongoose.connect('localhost:27017/ondasonora')
 require('./config/passport');
 
 var app = express();

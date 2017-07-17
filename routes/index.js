@@ -20,9 +20,9 @@ router.post('/admin/login', loggedOut, passport.authenticate('local-login', {
     failureFlash: true
 }));
 
-router.use('/', loggedIn, function (req, res, next) {
+/*router.use('/', loggedIn, function (req, res, next) {
     next();
-});
+});*/
 
 /* GET home page. */
 router.get('/admin', function(req, res) {

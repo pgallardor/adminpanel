@@ -1,7 +1,7 @@
 var Creator = require('../models/creator');
 var mongoose = require('mongoose');
 
-mongoose.connect('localhost:27017/ondatest');
+mongoose.connect('localhost:27017/ondasonora');
 
 var creators = [
     new Creator({
