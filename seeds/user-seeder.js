@@ -5,31 +5,67 @@ mongoose.connect('localhost:27017/ondatest');
 
 var creators = [
     new Creator({
-        userId: 'nefasho',
-        name: 'Men El Men',
+        username: 'nefasho',
         email: 'men@elmen.us',
-        phNumber: '5689999999'
+        rut: '5689999999',
+        passwd: {
+            salt: '666',
+            hash: '666'
+        },
+        profile: {
+            fullname: 'Nefasho el M3n',
+            country: 'Chile',
+            city: 'Santiago',
+            address: 'Calle el M3n'
+        }
     }),
 
     new Creator({
-       userId: 'mamertomallol',
-       name: 'Mamerto Mallol',
+       username: 'mamertomallol',
        email: 'mallol@pcchile.ru',
-       phNumber: '1916-1973'
+       rut: '1916-1973',
+       passwd: {
+         salt: '555',
+         hash: '4444'
+       },
+       profile: {
+           fullname: "Mamerto Mallol",
+           country: 'Rusia',
+           city: 'Leningrado',
+           address: 'Ogon po Gotovnosti'
+       }
     }),
 
     new Creator({
-        userId: 'yachorre',
-        name: 'Yzabel Aschoorra',
+        username: 'yachorre',
         email: 'mskr@mskr.io',
-        phNumber: '696969696969'
+        rut: '696969696969',
+        passwd: {
+          salt: '555',
+          hash: '4444'
+        },
+        profile: {
+            fullname: 'Yzabel Aschoorra',
+            country: 'Suecia',
+            city: 'Estocolmo',
+            address: 'I dunno dude'
+        }
     }),
 
     new Creator({
-       userId: 'pgallardo',
-       name: 'Pedro Gallardo',
+       username: 'pgallardo',
        email: 'pgallardo@mskr.io',
-       phNumber: '0303456'
+       rut: '0303456',
+       passwd: {
+           salt: '5dd',
+           hash: 'alkjsd'
+       },
+       profile: {
+           fullname: 'Pedro Gallardo',
+           country: 'Suiza',
+           city: 'Berna',
+           address: 'Jej'
+       }
     })
 ]
 

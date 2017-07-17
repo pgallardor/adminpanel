@@ -33,7 +33,7 @@ router.get('/admin', function(req, res) {
 
 router.get('/admin/information/:id', function (req, res) {
     Project.findById(req.params.id, function (err, docs) {
-        User.findOne({'userId': docs.byUser}, function (err, uinfo) {
+        User.findById(docs.by, function (err, uinfo) {
             console.log(docs);
             console.log(uinfo);
             res.render('details', {uinfo: uinfo, pinfo: docs});
@@ -73,7 +73,9 @@ router.post('/admin/review/:id', function (req, res) {
 })
 
 router.get('/admin/users', function (req, res) {
-    res.render('users', {});
+    User.find( function (err, user) {
+        res.render('users', {users: user});
+    })
 })
 
 router.get('/admin/write_message/:project/:username', function (req, res){

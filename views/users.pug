@@ -3,5 +3,14 @@ extends layout
 block content
     div(class="html_body")
         h2 Usuarios
-        p Links a perfiles, posibilidad de baneo, etc etc.
-
+        div(class="panel panel-primary")
+            table(class="table" width="500")
+                tr
+                    th Nombre Completo
+                    th Nombre Usuario
+                    th E-mail
+                each usr in users
+                    tr
+                        td #{usr.profile.fullname}
+                        td #{usr.username}
+                        td #{usr.email}

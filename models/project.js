@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var schema = new Schema({
     by: {type: String, required: true},
+    cat: {type: Number, required: true},
     name: {type: String, required: true},
     flex: {type: Boolean, required: true},
     descr: {type: String, required: false},

@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  -var today = new Date();
+  - var today = new Date();
+  - var month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
   div(class="html_body")
     h1 Onda Sonora Admin Panel
     div(class="panel panel-primary")
@@ -20,9 +21,9 @@ block content
             td
               <a href="/admin/information/#{element._id}"> #{element.name} </a>
               if (Math.ceil(from_creation/(1000*3600*24)) <= 2)
-                <i class="fa fa-star fa-lg"></i>
+                <i class="fa fa-exclamation fa-lg"></i>
             - var c_day = element.creation.getDate();
-            - var c_my = c_day + "/" + element.creation.getMonth() + "/" + element.creation.getFullYear();
+            - var c_my = c_day + " - " + month[element.creation.getMonth()] + " - " + element.creation.getFullYear();
             td #{c_my}
             - var time_diff = element.deadline - today;
             - var remaining = Math.ceil(time_diff / (1000 * 3600 * 24));

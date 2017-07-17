@@ -1,6 +1,7 @@
 extends layout
 
 block content
+   - var categories = ['Música', 'Audiovisual', 'Literatura', 'Artes Visuales'];
    div(id="body_info", class="html_body")
       div(id="page_wrap")
          //img(src="https://pics.me.me/absolutely-disgusting-me-irl-20062128.png" alt="Photo of Cthulu" id="pic")
@@ -8,7 +9,7 @@ block content
          div(id="contact-info" class="vcard")
             h1(class="fn") #{pinfo.name}
             h3 Contacto
-            <p> Teléfono: <span class="tel">#{uinfo.phNumber}</span><br />Email:
+            <p> Email:
             <a class="email" href="mailto:#{uinfo.email}">#{uinfo.email}</a><br/>
             </p>
          div(id="objective")
@@ -20,7 +21,17 @@ block content
 
             dt Creator's Name
             dd
-               h2 #{uinfo.name}
+               h2 #{uinfo.profile.fullname}
+               <hr>
+               h2 Country
+               p #{uinfo.profile.country}
+
+               h2 City
+               p #{uinfo.profile.city}
+
+               h2 Address
+               p #{uinfo.profile.address}
+
                p <a href="#">Referencia al perfil</a>
                //p
                 <strong>Country: </strong>Sweden YES! <br/> <strong>City: </strong> Stockholm
@@ -29,11 +40,17 @@ block content
 
             dt Project's Information
             dd
-               h2 URL
+               h2 URL:
                p <a href="https://wwww.ondasonora.rock/project/#{pinfo._id}">Ir a página de proyecto</a>
 
-               h2 Category
-               p Something here
+               h2 Campaign type:
+               if (pinfo.flex)
+                  p Flexible
+               else
+                  p Todo o nada
+
+               h2 Category:
+               p #{categories[pinfo.cat]}
 
                h2 Goal:
                <p><pre>$#{pinfo.goal}</pre></p>
