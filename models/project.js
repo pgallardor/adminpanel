@@ -13,6 +13,6 @@ var schema = new Schema({
     current: {type: Number, required: true},
     private: {type: Boolean, required: true},
     status: {type: Number, required: true}
-});
+}, {collection: 'project'});
 
 module.exports = mongoose.model('Project', schema);

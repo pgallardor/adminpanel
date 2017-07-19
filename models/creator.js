@@ -15,6 +15,6 @@ var schema = new Schema({
       city: {type: String, required: false},
       address: {type: String, required: false}
    }
-});
+}, {collection: 'user'});
 
 module.exports = mongoose.model('Creator', schema);
