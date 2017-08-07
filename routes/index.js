@@ -1,15 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var basicAuth = require('basic-auth');
+var request = require('request');
 var User = require('../models/creator');
 var Project = require('../models/project');
+var Payment = require('../models/payment');
 
-/*ERASE BEFORE USING ON SERVER*/
-/*router.get('/', function (req, res) {
-    res.redirect('/admin');
-});*/
+var headerOptions = {
+  "url": "/admin/login",
+  "headers": {
+      "Authorization" : "Basic " + new Buffer("admin:admin").toString("base64")
+    }
+};
 
-router.get('/admin/login', loggedOut, function (req, res) {
+request( headerOptions, function (error, response, body) {
+    console.log("Body: ", body);
+});
+
+router.get('/admin/login', loggedOut, auth, function (req, res) {
     var messages = req.flash('error');
     res.render('user/login', {messages: messages, hasErrors: messages.length > 0});
 });
@@ -34,8 +43,6 @@ router.get('/admin', function(req, res) {
 router.get('/admin/information/:id', function (req, res) {
     Project.findById(req.params.id, function (err, docs) {
         User.findById(docs.by, function (err, uinfo) {
-            console.log(docs);
-            console.log(uinfo);
             res.render('details', {uinfo: uinfo, pinfo: docs});
         })
 
@@ -73,10 +80,43 @@ router.post('/admin/review/:id', function (req, res) {
 })
 
 router.get('/admin/users', function (req, res) {
-    User.find( function (err, user) {
-        res.render('users', {users: user});
-    })
-})
+    if (!req.query.usrex) {
+        User.find(function (err, user) {
+            res.render('users', {users: user});
+        })
+    }
+
+    else{
+        User.find({username: new RegExp(req.query.usrex, 'i')}, function (err, user) {
+           res.render('users', {users: user});
+        });
+    }
+});
+
+router.get('/admin/payments', function (req, res) {
+
+    var sort_param = req.query.order;
+    console.log(sort_param);
+
+    if (!sort_param) {
+        Payment.find().populate('user_id project_id').exec(function (err, paylist) {
+            res.render('payments', {payments: paylist});
+        });
+    }
+    else {
+        var sortv = "";
+
+        if (sort_param === 'user' || sort_param === 'project')
+            sortv = sort_param + '_id';
+
+        else if (sort_param === 'amnt')
+            sortv = 'amount';
+
+        Payment.find().populate('user_id project_id').sort(sortv).exec(function (err, paylist) {
+           res.render('payments', {payments: paylist});
+        });
+    }
+});
 
 router.get('/admin/write_message/:project/:username', function (req, res){
    var data = {
@@ -100,7 +140,7 @@ router.post('/admin/add_admin', passport.authenticate('local-signup', {
 router.get('/admin/logout', function (req, res) {
     req.logout();
     res.redirect('/admin/login');
-})
+});
 
 module.exports = router;
 
@@ -116,4 +156,23 @@ function loggedOut(req, res, next) {
         return next();
 
     res.redirect('/admin');
+}
+
+function auth (req, res, next) {
+   var user = basicAuth(req);
+
+   if (!user || !user.name || !user.pass){
+       res.set('WWW-Authenticate', 'Basic realm=Authentication Required');
+       res.sendStatus(401);
+       return;
+   }
+
+   if (user.name === 'admin' && user.pass === 'admin')
+       next();
+
+   else{
+       res.sendStatus(401);
+       res.redirect('http://www.google.com');
+       return;
+   }
 }

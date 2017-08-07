@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    div(class="html_body")
+        h2 Pagos
+        p Ordernar por <a href="?order=user">Usuario</a> <a href="?order=project">Proyecto</a> <a href="?order=amnt">Monto</a>
+        div(class="panel panel-primary")
+            table(class="table" width="500")
+                tr
+                    th Proyecto
+                    th Usuario
+                    th Monto
+                    th Plataforma
+                each payment in payments
+                    tr
+                        td #{payment.project_id.name}
+                        td #{payment.user_id.username}
+                        td #{payment.amount}
+                        td #{payment.method}

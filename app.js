@@ -3,12 +3,12 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var auth = require('basic-auth-connect');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 mongoose.connect('localhost:27017/ondasonora')
