@@ -129,6 +129,12 @@ router.get('/admin/payments', function (req, res) {
     }
 });
 
+router.get('/admin/payments/:id', function (req, res) {
+    Payment.findById(req.params.id).populate('user_id project_id').exec( function (err, payment) {
+        res.render('payment_detail', {payment: payment});
+    })
+});
+
 router.get('/admin/write_message/:project/:username', function (req, res){
    var data = {
        pname: req.params.project,

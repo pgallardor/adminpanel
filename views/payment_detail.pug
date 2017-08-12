@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div(class="html_body")
+        h2 Pago al proyecto: "#{payment.project_id.name}"
+        p </br>
+        table(class="table" width="500")
+            tr
+                th Efectuado por
+                td #{payment.user_id.profile.fullname} (@#{payment.user_id.username})
+            tr
+                th Fecha
+                td #{payment.date}
+            tr
+                th Monto
+                td $ #{payment.amount}
+            tr
+                th Mediante
+                td #{payment.method}
+            tr
+                th Estado del pago
+                if payment.paid
+                    td Pagado
+                else
+                    td Pendiente
+
+
+        p <a href="/admin/payments">Go back</a>
