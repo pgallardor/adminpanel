@@ -64,14 +64,14 @@ router.get('/admin/messages', function (req, res) {
 router.post('/admin/accept/:id', function (req, res) {
     Project.findOneAndUpdate({_id: req.params.id}, {$set: {status: 1}}, {upsert: true}, function (err, doc) {
         if (err) return res.send(500, {error: err});
-        res.redirect('/');
+        res.redirect('/admin');
     })
 });
 
 router.post('/admin/reject/:id', function (req, res, next) {
     Project.remove({_id: req.params.id}, function (err) {
         if (!err)
-            res.redirect('/');
+            res.redirect('/admin');
         else
             console.log(err);
     })
