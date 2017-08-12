@@ -5,9 +5,10 @@ block content
   - var month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
   div(class="html_body")
     h1 Onda Sonora Admin Panel
+    p <form action="?search=true" method="get"> Search <input type="text" name="pname"><br><input type="submit" value="Search">
+
     div(class="panel panel-primary")
       div(class="panel-heading") Proyectos
-
       table(class="table" width="500")
         tr
           th Nombre Proyecto

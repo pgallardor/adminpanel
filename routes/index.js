@@ -10,7 +10,7 @@ var Payment = require('../models/payment');
 var headerOptions = {
   "url": "/admin/login",
   "headers": {
-      "Authorization" : "Basic " + new Buffer("admin:admin").toString("base64")
+      "Authorization" : "Basic " + new Buffer("aronosadno:777roxah").toString("base64")
     }
 };
 
@@ -35,9 +35,17 @@ router.use('/', loggedIn, function (req, res, next) {
 
 /* GET home page. */
 router.get('/admin', function(req, res) {
-  Project.find( function (err, docs) {
-      res.render('index', {to_review: docs});
-  })
+  if (!req.query.pname) {
+      Project.find().sort('status').exec(function (err, docs) {
+          res.render('index', {to_review: docs});
+      });
+  }
+
+  else{
+      Project.find({name: new RegExp(req.query.pname, 'i')}).sort('status').exec(function (err, docs) {
+          res.render('index', {to_review: docs});
+      });
+  }
 });
 
 router.get('/admin/information/:id', function (req, res) {
@@ -106,8 +114,11 @@ router.get('/admin/payments', function (req, res) {
     else {
         var sortv = "";
 
-        if (sort_param === 'user' || sort_param === 'project')
-            sortv = sort_param + '_id';
+        if (sort_param === 'user')
+            sortv = sort_param + '_id.username';
+
+        else if (sort_param === 'project')
+            sortv = sort_param + '_id.name';
 
         else if (sort_param === 'amnt')
             sortv = 'amount';
@@ -167,7 +178,7 @@ function auth (req, res, next) {
        return;
    }
 
-   if (user.name === 'admin' && user.pass === 'admin')
+   if (user.name === 'aronosadno' && user.pass === '777roxah')
        next();
 
    else{
