@@ -102,7 +102,7 @@ router.get('/admin/users', function (req, res) {
 });
 
 router.post('/admin/users/:uid', function(req, res) {
-    User.findOneAndUpdate({_id: req.params.id}, {$set: {status: 1}}, {upsert: true}, function (err, doc) {
+    User.findOneAndUpdate({_id: req.params.uid}, {$set: {status: 1}}, {upsert: true}, function (err, doc) {
         if (err)
             return res.send(500, {error: err});
 
