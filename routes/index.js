@@ -110,6 +110,34 @@ router.post('/admin/users/:uid', function(req, res) {
     });
 });
 
+router.post('/admin/ban/:uid', function (req, res) {
+    User.findOneAndUpdate({_id: req.params.uid}, {$set: {status: -1}}, {upsert: true}, function (err, usr) {
+        if (err)
+            return res.send(500, {error: err});
+
+        res.redirect('/admin/users');
+    })
+});
+
+router.post('/admin/unban/:uid', function (req, res) {
+    User.findById(req.params.uid, function (err, usr) {
+        if (usr.status != -1 || !usr) {
+            //console.log("HEY WASSUP " + usr.status);
+            res.redirect('/admin/users');
+        }
+
+        else{
+            //console.log("HIYAA IM UNBANNING FAM");
+            User.update({_id: req.params.uid}, {$set: {status: 0}}, {upsert: true}, function (err, nouse) {
+                if (err)
+                    return res.send(500, {error: err});
+
+                res.redirect('/admin/users');
+            })
+        }
+    })
+})
+
 router.get('/admin/payments', function (req, res) {
 
     var sort_param = req.query.order;

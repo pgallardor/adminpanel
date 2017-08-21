@@ -11,12 +11,21 @@ block content
                     th Nombre Usuario
                     th E-mail
                     th ¿Puede crear?
+                    th ¿Baneado?
                 each usr in users
                     tr
                         td #{usr.profile.fullname}
                         td #{usr.username}
                         td #{usr.email}
-                        if (usr.status)
+                        if (usr.status == 1)
                             td Si
-                        else
+                        else if (usr.status == 0)
                             td <form action="/admin/users/#{usr._id}" method="post"><input type="submit" value="Permitir"></form>
+
+                        else
+                            td Baneado
+
+                        if (usr.status != -1)
+                            td <form action="/admin/ban/#{usr._id}" method="post"><input type="submit" value="Ban"></form>
+                        else
+                            td <form action="/admin/unban/#{usr._id}" method="post"><input type="submit" value="Unban"></form>
