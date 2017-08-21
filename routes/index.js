@@ -127,7 +127,6 @@ router.post('/admin/unban/:uid', function (req, res) {
         }
 
         else{
-            //console.log("HIYAA IM UNBANNING FAM");
             User.update({_id: req.params.uid}, {$set: {status: 0}}, {upsert: true}, function (err, nouse) {
                 if (err)
                     return res.send(500, {error: err});
