@@ -3,7 +3,7 @@ extends layout
 block content
     div(class="html_body")
         h2 Usuarios
-        p <form action="?search=true" method="get"> Search <input type="text" name="usrex"><br><input type="submit" value="Search">
+        p <form action="?search=true" method="get"> Search <input type="text" name="usrex"><br><input type="submit" value="Search"></form>
         div(class="panel panel-primary")
             table(class="table" width="500")
                 tr
@@ -19,4 +19,4 @@ block content
                         if (usr.status)
                             td Si
                         else
-                            td <a href="/admin/users/#{usr._id}">Permitir</a>
+                            td <form action="/admin/users/#{usr._id}" method="post"><input type="submit" value="Permitir"></form>
