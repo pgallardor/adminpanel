@@ -101,6 +101,15 @@ router.get('/admin/users', function (req, res) {
     }
 });
 
+router.post('/admin/users/:uid', function(req, res) {
+    Project.findOneAndUpdate({_id: req.params.id}, {$set: {status: 1}}, {upsert: true}, function (err, doc) {
+        if (err)
+            return res.send(500, {error: err});
+
+        res.redirect('/admin/users');
+    });
+});
+
 router.get('/admin/payments', function (req, res) {
 
     var sort_param = req.query.order;

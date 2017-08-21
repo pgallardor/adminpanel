@@ -10,8 +10,13 @@ block content
                     th Nombre Completo
                     th Nombre Usuario
                     th E-mail
+                    th ¿Puede crear?
                 each usr in users
                     tr
                         td #{usr.profile.fullname}
                         td #{usr.username}
                         td #{usr.email}
+                        if (usr.status)
+                            td Si
+                        else
+                            td <a href="/admin/users/#{usr._id}">Permitir</a>
